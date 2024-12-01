@@ -7,10 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "server": "json-server database/index.json --port 3001 --routes database/routes.json",
+    "server": "json-server database/index.json --port 3001 database/routes.json",
     "preview": "vite preview"
   },
   "dependencies": {
+    "json-server": "^1.0.0-beta.3",
+    "mobx": "^6.13.5",
+    "mobx-react-lite": "^4.0.7",
+    "mobx-state-tree": "^7.0.0",
+    "query-string": "^9.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
