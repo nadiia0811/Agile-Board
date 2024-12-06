@@ -9,10 +9,13 @@ const User = types.model("User", {
     avatar: types.string,
 });
 
+const ActiveUser = User.named("ActiveUser");
+
 const api = ApiCall("http://localhost:3001");
 
 const UsersStore = types.model("UsersStore", {
-  users: types.maybe(types.array(User), [])
+  users: types.maybe(types.array(User), []),
+  me: types.maybe(ActiveUser)
 }).actions(
     (self) => {
       return {
@@ -21,6 +24,7 @@ const UsersStore = types.model("UsersStore", {
               try {
                 const response = yield api.get("users");
                 self.users = Array.isArray(response) ? response: response.users;
+                self.me = yield api.get("me");
               } catch (err) {
                 console.log("Failed to load users: ", err);
               }

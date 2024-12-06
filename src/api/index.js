@@ -13,7 +13,7 @@ const ApiCall = (domain) => {
     });
 
     if(!response.ok) {
-      throw new Error("Failed fetch users...")
+      throw new Error("Failed fetch users...");
     }
 
     return await response.json();
